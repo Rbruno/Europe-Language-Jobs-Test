@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//Gets
+Route::get('/getListas', 'ListasController@getListas');
+
+//inserts
+Route::post('/GuardarLista', 'ListasController@GuardarLista');
+
+//inserts
+Route::get('/DeleteListas/{id}', 'ListasController@EliminarLista');

@@ -3,7 +3,7 @@
     class="mx-auto ml-3"
   >
     <v-toolbar color="blue darken-3" dark >
-      <v-toolbar-title>New list</v-toolbar-title>
+      <v-toolbar-title>{{this.nombreLista}}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon @click="() => this.dialog = true">
         <v-icon>mdi-basket-outline</v-icon>
@@ -49,7 +49,9 @@
 import CargaProductosComponent from './CargaProductosComponent.vue'
   export default {
   components: { CargaProductosComponent },
+    props: ['nombreLista', 'idLista'],
     data: () => ({
+      productos: [],
       dialog: false,
       recent: [
         {

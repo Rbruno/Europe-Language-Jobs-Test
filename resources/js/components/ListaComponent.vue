@@ -10,16 +10,28 @@
         v-model="selectedItem"
         color="primary"
       >
-        <v-list-item v-for="(lista, i) in listas" :key="i" >
+        <v-list-item v-for="(lista) in listas" :key="lista.id" @click="CargarLista(lista.id, lista.nombre)">
           
           <v-list-item-icon>
-            <v-icon v-text="lista.icon"></v-icon>
+            <v-icon>mdi-clipboard-list</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title v-text="lista.nombre"></v-list-item-title>
           </v-list-item-content>
+          
+          <v-spacer></v-spacer>
+          
+          <v-btn icon color="red" @click="EliminarLista(lista.id)">
+            <v-icon>mdi-window-close</v-icon>
+          </v-btn>
         
         </v-list-item>
+
+        <!-- vacio -->
+        <v-alert v-if="listas.length === 0" text dense color="teal" icon="mdi-clock-fast" border="left" class="ml-1" >
+          No existen listas creadas
+        </v-alert>
+
 
       </v-list-item-group>
     </v-list>
@@ -28,13 +40,19 @@
 
 <script>
   export default {
+    props:['listas'],
     data: () => ({
       selectedItem: -1,
-      listas: [
-        { nombre: 'Real-Time', icon: 'mdi-clipboard-list' },
-        { nombre: 'Audience', icon: 'mdi-clipboard-list' },
-        { nombre: 'Conversions', icon: 'mdi-clipboard-list' },
-      ],
     }),
+    methods:{
+      CargarLista(id, nombre){
+        this.$emit('UpdateProducto', nombre, id);
+      },
+      EliminarLista(id){
+        axios.get('/DeleteListas/'+id).then((result)=>{
+            this.$emit('UpdateLista', result.data);
+          })
+      }
+    },
   }
 </script>
