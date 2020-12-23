@@ -4,7 +4,7 @@
     class="ml-3"
   >
      <v-list shaped>
-      <v-subheader>LISTAS</v-subheader>
+      <v-subheader class="blue--text text--darken-2">LISTAS</v-subheader>
       
       <v-list-item-group
         v-model="selectedItem"

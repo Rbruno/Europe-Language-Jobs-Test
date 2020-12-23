@@ -2,14 +2,14 @@
 <v-card
     class="card"
 >
-<v-card-title> Nueva Lista </v-card-title>
+<v-card-title class="blue--text text--darken-2"> Nueva Lista </v-card-title>
 <v-card-text>
     <v-form ref="form"  @submit.prevent="submit">
         <v-text-field
         v-model="nombre"
         label="Nombre de la lista"
         ></v-text-field>
-        <v-alert  dismissible dense text :type="tipoMensaje" v-text="mensaje" v-if="mensaje !== ''"  >
+        <v-alert  dismissible dense text :type="tipoMensaje"  v-if="mensaje !== ''"  >{{mensaje}}
     </v-alert>
         <v-btn
         :disabled="this.nombre === ''"
