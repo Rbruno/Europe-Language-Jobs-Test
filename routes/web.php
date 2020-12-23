@@ -20,9 +20,14 @@ Route::get('/', function () {
 
 //Gets
 Route::get('/getListas', 'ListasController@getListas');
+Route::get('/getProductos/{id}', 'ProductosController@getProductos');
 
 //inserts
 Route::post('/GuardarLista', 'ListasController@GuardarLista');
+Route::post('/GuardarProducto', 'ProductosController@GuardarProducto');
 
-//inserts
+//Updates
+Route::get('/marcarProducto/{id}/{estado}', 'ProductosController@marcarProducto');
+
+//Deletes
 Route::get('/DeleteListas/{id}', 'ListasController@EliminarLista');

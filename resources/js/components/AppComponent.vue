@@ -25,6 +25,8 @@
             <ContenidoLista-component
               v-bind:nombreLista="this.nombreLista" 
               v-bind:idLista="this.idLista" 
+              v-bind:productos="this.productos" 
+              v-on:UpdateProducto="UpdateProducto"
             ></ContenidoLista-component>
           </div>
         </v-row>    
@@ -36,7 +38,8 @@
   export default {
     data: () => ({
       selectedItem: -1,
-      listas: [],    
+      listas: [],
+      productos: [],  
       nombreLista: '' ,
       idLista: 0, 
     }),
@@ -53,11 +56,13 @@
       UpdateLista(datos) {
         this.listas = datos
       },
-      UpdateProducto(nombre, id){
-        console.log(nombre)
-        this.nombreLista = nombre;
-        this.idLista = id;
+
+      UpdateProducto(nombre, id, datos){
+        if (nombre !== '') {this.nombreLista = nombre};
+        if (id !== '') {this.idLista = id};
+        this.productos = datos;
       }
+
     },
   }
 </script>

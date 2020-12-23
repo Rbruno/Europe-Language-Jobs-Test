@@ -46,7 +46,10 @@
     }),
     methods:{
       CargarLista(id, nombre){
-        this.$emit('UpdateProducto', nombre, id);
+        axios.get('/getProductos/'+id).then((result)=>{
+            this.$emit('UpdateProducto', nombre, id, result.data);
+        })
+        
       },
       EliminarLista(id){
         axios.get('/DeleteListas/'+id).then((result)=>{
