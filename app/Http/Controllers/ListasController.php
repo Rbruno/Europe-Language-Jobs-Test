@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Listas;
+use App\Models\Productos;
 use Arr;
 use DB;
 
@@ -39,6 +40,7 @@ class ListasController extends Controller
     public function EliminarLista(Request $request, $id)
     {
             try{
+                Productos::where('fkLista', '=', $id)->delete();
                 Listas::where('id', '=', $id)->delete();
                 return Listas::all();
             }
